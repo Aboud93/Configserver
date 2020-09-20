@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+zuul:
+  routes:
+    userservice:
+      path: /user/**
+      url: http://localhost:8081/songsMS-KBE/rest
+      sensitiveHeaders:
+      stripPrefix: false
+    songstext:
+      path: /text/**
+      url: http://localhost:8084/songsMS-KBE/rest/text
+
+    song_list_service:
+      path: /song/**
+      url: http://localhost:8082/songsMS-KBE/rest/song
+
+
+
+  ribbon:
+    eager-load:
+      enabled: true
